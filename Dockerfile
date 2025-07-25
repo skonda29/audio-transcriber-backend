@@ -1,14 +1,19 @@
-# Use an official OpenJDK 17 runtime as base
-FROM openjdk:17-jdk-slim
-
-# Set working directory inside container
+# Stage 1: Build the JAR
+FROM maven:3.9.9-eclipse-temurin-17 AS builder
 WORKDIR /app
 
-# Copy JAR file from target directory
-COPY target/audio-transcribe-0.0.1-SNAPSHOT.jar app.jar
+# Copy pom.xml and download dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
 
-# Expose port 8080
+# Copy source code and build
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the JAR
+FROM eclipse-temurin:17-jre-jammy
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
+
 EXPOSE 8080
-
-# Run the jar file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
