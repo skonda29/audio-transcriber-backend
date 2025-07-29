@@ -1,0 +1,56 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+HELP.md
+RENDER_DEPLOYMENT_GUIDE.md
+DOCKER_DEPLOYMENT_GUIDE.md
+POSTMAN_TESTING_GUIDE.md
+RESUME_ENHANCED_WITH_METRICS.md
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts (will be built inside container)
+target/
+*.jar
+*.war
+
+# Maven wrapper (use container's Maven)
+.mvn/
+mvnw
+mvnw.cmd
+
+# Test files
+src/test/
+
+# Backup files
+*.bak
+Dockerfile.bak
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if any)
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Other build tools
+.gradle/
+build/ 
