@@ -13,6 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOriginPatterns(
                     "http://localhost:5173",
                     "http://localhost:3000", 
+                    "https://audio-transcriber-backend-3.onrender.com",
                     "https://audio-transcriber-docupro.netlify.app",
                     "https://*.onrender.com"
                 )

@@ -6,4 +6,6 @@ services:
     envVars:
       - key: OPENAI_API_KEY
         sync: false
-    healthCheckPath: /actuator/health 
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+    healthCheckPath: /health 
