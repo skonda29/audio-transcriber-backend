@@ -1,6 +1,11 @@
 spring.application.name=audio-transcribe
 spring.ai.openai.api-key=${OPENAI_API_KEY}
 
+# File Upload Configuration
+spring.servlet.multipart.max-file-size=25MB
+spring.servlet.multipart.max-request-size=30MB
+spring.servlet.multipart.enabled=true
+
 # Audio Transcription Configuration
 spring.ai.openai.audio.transcription.options.model=whisper-1
 spring.ai.openai.audio.transcription.options.response-format=text
