@@ -10,7 +10,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("https://audio-transcriber-docupro.netlify.app")
+                .allowedOriginPatterns(
+                    "http://localhost:5173",
+                    "http://localhost:3000", 
+                    "https://audio-transcriber-docupro.netlify.app",
+                    "https://*.onrender.com"
+                )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);

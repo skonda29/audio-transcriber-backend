@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: audio-transcribe-backend
+    env: java
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jar
+    plan: free
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: SERVER_PORT
+        value: 10000
+    healthCheckPath: /actuator/health 
